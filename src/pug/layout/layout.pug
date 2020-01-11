@@ -1,0 +1,40 @@
+//- layout.pug
+
+block variables
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{title}
+    //- General CSS styles
+    include ../includes/css.pug
+    //- Custom CSS files
+    block css
+  body
+    #walton-wrapper.walton-wrapper.w-100.d-flex.flex-column.justify-content-between
+      .d-flex.flex-column.w-100
+        //- Site header
+        include ../includes/site-header.pug
+        if isHome != true
+          //- Page titlebar
+          include ../includes/page-title.pug
+        else
+          //- Homepage slider
+          if homepageSlider == 1
+            include ../includes/homepage-slider-1.pug
+          if homepageSlider == 2
+            include ../includes/homepage-slider-2.pug
+          if homepageSlider == 3
+            include ../includes/homepage-slider-3.pug
+      #site-content.site-content
+        //- Main page content
+        block content
+      //- Site footer
+      include ../includes/site-footer.pug
+  //- General js files
+  include ../includes/js.pug
+  //- Custom js files
+  block js
